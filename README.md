@@ -1,4 +1,4 @@
-# Python Class in pygame
+# Python Classes in pygame
 
 *Learn to use Python classes to produce a game in pygame*
 
