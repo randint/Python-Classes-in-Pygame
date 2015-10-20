@@ -57,3 +57,9 @@ class Missile:
     self.xpos = x
     self.ypos = y
 
+
+# Main event loop. Here we:
+# 1. Handle keyboard input for the player and move the player around
+# 2. Move the missiles around
+# 3. Move the aliens around
+# 4. Detect collisions and handle them
