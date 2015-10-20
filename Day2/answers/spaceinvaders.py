@@ -137,11 +137,10 @@ while running:
 
   keys = pygame.key.get_pressed()
   if keys[pygame.K_RIGHT]:
-    spaceship.moveRight()
+      spaceship.moveRight()
   if keys[pygame.K_LEFT]:
-    spaceship.moveLeft()
+      spaceship.moveLeft()
   if keys[pygame.K_SPACE]:
-    if len(player_missiles) == 0:
       spaceship.shoot()
 
   screen.fill(black)
