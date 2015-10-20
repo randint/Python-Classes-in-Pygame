@@ -63,8 +63,7 @@ class Alien:
   xpos = 0
   ypos = 0
   xspeed = 2
-  picture1 = pygame.image.load('alien1.png')
-  picture2 = pygame.image.load('alien2.png')
+  picture = pygame.image.load('alien1.png')
 
   def __init__(self, x, y):
     self.xpos = x
@@ -73,19 +72,17 @@ class Alien:
   def move(self, x, y):
     self.xpos += x
     self.ypos += y
-    self.picture3 = self.picture1
-    self.picture1 = self.picture2
-    self.picture2 = self.picture3
 
   def shoot(self):
-    missile = Missile(self.xpos + 16, self.ypos + 32, 10)
-    alien_missiles.append(missile)
+    # Your code here!
+    pass
 
   def get_rect(self):
     return pygame.Rect(self.xpos, self.ypos, 32, 32)
 
   def draw(self):
-    screen.blit(self.picture1, (self.xpos, self.ypos))
+    # Your code here!
+    pass
 
 
 class Missile:
@@ -116,9 +113,8 @@ class Missile:
 # Create all the objects and variables!
 spaceship = Spaceship(200, 440)
 aliens = []
-for x in range(1,8):
-  for y in range(1,4):
-    aliens.append(Alien(x * 50 + 10, y * 50 + 10))
+# Make a grid of aliens
+# Your code here!
 
 running = True
 ticks = 0
@@ -149,27 +145,21 @@ while running:
   # Move, detect collisions, and draw the player's missiles
   for missile in player_missiles:
     missile.move()
-    for alien in aliens:
-      if doRectsOverlap(alien.get_rect(), missile.get_rect()):
-        aliens.remove(alien)
-        missile.spent = True
+
+    # Determine if the missile hit an alien. If so, the missile is spent
+    # Your code here!
 
     if missile.isSpent():
       player_missiles.remove(missile)
     missile.draw()
 
-  # Move, detect collisions, and draw the player's missiles
+
+  # Move, detect collisions, and draw the aliens' missiles
   for missile in alien_missiles:
     missile.move()
-
-    if doRectsOverlap(spaceship.get_rect(), missile.get_rect()):
-      print "YOU LOSE"
-      running = False
-      missile.spent = True
-
-    if missile.isSpent():
-      alien_missiles.remove(missile)
-    missile.draw()
+    # Detects collisions between the player and the alien missile
+    # The player loses if they touch an alien missile
+    # Your code here!
 
   # Move all the aliens
   # The more aliens there are, the slower they move
@@ -189,20 +179,11 @@ while running:
   for alien in aliens:
     alien.draw()
     # Aliens shoot randomly
-    # 0.05 percent change per frame that an alien shoots
-    if (random.randint(1,1000) < 5):
-      alien.shoot()
+    # Your code here!
 
   # If there are no more aliens, the player wins
-  if len(aliens) == 0:
-    print "YOU WIN!"
-    running = False
-
   # If any alien reaches the bottom of the screen, the player loses
-  for alien in aliens:
-    if alien.ypos > SCREEN_HEIGHT - 64:
-      print "YOU LOSE"
-      running = False
+  # Your code here!
 
   # Draw the spaceship
   spaceship.draw()
