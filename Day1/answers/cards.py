@@ -42,26 +42,20 @@ class Card:
 class Deck:
     def __init__(self):
         self.cards = []
-        self.dealtCards = []
+        self.dealt = []
 
         for suit in ['H', 'S', 'D', 'C']:
             for value in ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']:
                 self.cards.append(Card(suit, value))
 
-    def deal_card(self):
-        self.dealtCards.append(self.cards.pop(random.randint(0, len(self.cards)) - 1))
-        return self.dealtCards[-1]
+    def deal(self):
+        self.dealt.append(self.cards.pop(random.randint(0, len(self.cards)) - 1))
+        return self.dealt[-1]
 
+    def deal(self, numCards):
+        for i in range(numCards):
+            self.dealt.append(self.cards.pop(random.randint(0, len(self.cards)) - 1))
+        return self.dealt
 
-    def num_remaining(self):
+    def remaining(self):
         return len(self.cards)
-
-
-deck = Deck()
-for card in deck.cards:
-    print(card)
-
-print("")
-
-while deck.cards:
-    print(deck.deal_card())
